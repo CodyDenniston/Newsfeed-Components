@@ -86,7 +86,34 @@ const data = [
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
+  
 ];
+
+function createArticle(title, Date, firstP, secondP, thirdP){
+
+  const article = document.createElement('div');
+  const date = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+  article.appendChild('date');
+  article.appendChild('expandButton');
+
+  article.classList.add('article');
+  date.classList.add('date');
+  expandButton.classList.add('expandButton');
+
+  expandButton.addEventListener('click', event => {
+  article.classList.toggle('article-open');
+  })
+  return article;
+}
+
+const articles = document.querySelector('.articles')
+
+data.map(el => {
+  console.log('creating article')
+  article.appendChild(createArticle(el.title, el.Date, el.firstP, el.secondP, el.thirdP))
+})
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
