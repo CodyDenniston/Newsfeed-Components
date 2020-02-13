@@ -92,11 +92,19 @@ const data = [
 function createArticle(title, Date, firstP, secondP, thirdP){
 
   const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
   const date = document.createElement('p');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
   const expandButton = document.createElement('span');
 
   article.appendChild('date');
   article.appendChild('expandButton');
+  article.appendChild('articleTitle');
+  article.appendChild('firstParagraph');
+  article.appendChild('secondParagraph');
+  article.appendChild('thirdParagraph');
 
   article.classList.add('article');
   date.classList.add('date');
@@ -111,8 +119,8 @@ function createArticle(title, Date, firstP, secondP, thirdP){
 const articles = document.querySelector('.articles')
 
 data.map(el => {
-  console.log('creating article')
-  article.appendChild(createArticle(el.title, el.Date, el.firstP, el.secondP, el.thirdP))
+  console.log('creating article', el.title)
+  articles.appendChild(createArticle(el.title, el.Date, el.firstP, el.secondP, el.thirdP))
 })
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
