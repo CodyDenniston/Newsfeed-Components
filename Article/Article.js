@@ -89,8 +89,9 @@ const data = [
   
 ];
 
-function createArticle(title, Date, firstP, secondP, thirdP){
+function createArticle(title, _Date, firstP, secondP, thirdP){
 
+  
   const article = document.createElement('div');
   const articleTitle = document.createElement('h2');
   const date = document.createElement('p');
@@ -99,28 +100,42 @@ function createArticle(title, Date, firstP, secondP, thirdP){
   const thirdParagraph = document.createElement('p');
   const expandButton = document.createElement('span');
 
-  article.appendChild('date');
-  article.appendChild('expandButton');
-  article.appendChild('articleTitle');
-  article.appendChild('firstParagraph');
-  article.appendChild('secondParagraph');
-  article.appendChild('thirdParagraph');
+  article.appendChild(date);
+  article.appendChild(expandButton);
+  article.appendChild(articleTitle);
+  article.appendChild(firstParagraph);
+  article.appendChild(secondParagraph);
+  article.appendChild(thirdParagraph);
 
   article.classList.add('article');
   date.classList.add('date');
   expandButton.classList.add('expandButton');
 
+
+  articleTitle.textContent = title;
+  date.textContent = _Date;
+  firstParagraph.textContent = firstP;
+  secondParagraph.textContent = secondP;
+  thirdParagraph.textContent = thirdP;
+  expandButton.textContent = 'read on';
+
+
+  // Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+
   expandButton.addEventListener('click', event => {
   article.classList.toggle('article-open');
   })
+  // Step 3: return the entire component.
   return article;
 }
 
-const articles = document.querySelector('.articles')
+const articles_ = document.querySelector('.articles')
+
+// Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
 data.map(el => {
   console.log('creating article', el.title)
-  articles.appendChild(createArticle(el.title, el.Date, el.firstP, el.secondP, el.thirdP))
+  articles_.appendChild(createArticle(el.title, el.date, el.firstParagraph, el.secondParagraph, el.thirdParagraph))
 })
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
